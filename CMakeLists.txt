@@ -1,32 +1,22 @@
-﻿cmake_minimum_required (VERSION 3.8)
-project ("statFEMPP")
-##############################################################################
-# PACKAGES
-##############################################################################
-set(EIGEN3_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/eigen/" )
-if(NOT EIGEN3_INCLUDE_DIR )
-    message(FATAL_ERROR "Please point the variable EIGEN3_INCLUDE_DIR to the include directory of your Eigen3 installation.")
-endif()
-message(STATUS "    Eigen3 directory: ${EIGEN3_INCLUDE_DIR}")
+﻿cmake_minimum_required (VERSION 3.3)
+set(PROJECT_NAME statFEMpp)
+set(PROJECT_SOURCE_DIR src)
+set(PROJECT_EXAMPLES_DIR examples)
+set(PROJECT_EXAMPLES ${PROJECT_EXAMPLES_DIR}/main.cpp)
+set(PROJECT_EXTERNAL_LIBRARIES_DIR external)
+set(PROJECT_EXTERNAL_LIBRARIES eigen)
+project (${PROJECT_NAME})
+#
+###########
+# Project #
+###########
+add_executable(${PROJECT_NAME} ${PROJECT_EXAMPLES})
 
+foreach(LIBRARY ${PROJECT_EXTERNAL_LIBRARIES})
+    add_subdirectory("${PROJECT_EXTERNAL_LIBRARIES_DIR}/${PROJECT_EXTERNAL_LIBRARIES}")
+endforeach(LIBRARY)
 
-set (GMSH_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmsh/include/")
-if(NOT GMSH_INCLUDE_DIR )
-    message(FATAL_ERROR "Please point the variable GMSH_INCLUDE_DIR to the include directory of your GMSH installation.")
-endif()
-message(STATUS "    GMSH directory: ${GMSH_INCLUDE_DIR}")
-
-
-
-
-##############################################################################
-# HEADERS
-##############################################################################
-include_directories(${EIGEN3_INCLUDE_DIR})
-include_directories(${GMSH_INCLUDE_DIR})
-
-
-# Include sub-projects.
-add_subdirectory("lib/matplotplusplus")
-add_subdirectory ("statFEMPP")
-
+target_link_libraries(${PROJECT_NAME} ${PROJECT_EXTERNAL_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+        $<INSTALL_INTERFACE:include>)
