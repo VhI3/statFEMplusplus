@@ -6,10 +6,10 @@
 #include <Eigen/Dense>
 #include <Eigen/Core>
 template <class T>
-class Node
+class Point
 {
 public:
-    explicit Node(const Eigen::Vector<T, 3> &coordinates);
+    explicit Point(const Eigen::Vector<T, 3> &coordinates);
 
     const Eigen::Vector<T, 3> &getCoordinates() const;
     void setCoordinates(const Eigen::Vector<T, 3> &coordinates);

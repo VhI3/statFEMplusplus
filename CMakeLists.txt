@@ -8,7 +8,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(PROJECT_NAME statFEMpp)
 set(PROJECT_SOURCE_DIR src)
 set(PROJECT_EXAMPLES_DIR examples)
-set(PROJECT_EXAMPLES ${PROJECT_EXAMPLES_DIR}/main.cpp src/Node.cpp src/Node.hpp src/Node.h)
+set(PROJECT_EXAMPLES ${PROJECT_EXAMPLES_DIR}/main.cpp src/Point.cpp src/Point.hpp src/Point.h)
 set(PROJECT_EXTERNAL_LIBRARIES_DIR external)
 
 # set(PROJECT_EXTERNAL_LIBRARIES eigen)
@@ -20,7 +20,7 @@ include(addEigen3)
 # ##########
 # Project #
 # ##########
-add_executable(${PROJECT_NAME} ${PROJECT_EXAMPLES} src/Node.cpp src/Node.hpp src/Node.h)
+add_executable(${PROJECT_NAME} ${PROJECT_EXAMPLES} src/Point.cpp src/Point.hpp src/Point.h)
 
 # foreach(LIBRARY ${PROJECT_EXTERNAL_LIBRARIES})
 # add_subdirectory("${PROJECT_EXTERNAL_LIBRARIES_DIR}/${PROJECT_EXTERNAL_LIBRARIES}")

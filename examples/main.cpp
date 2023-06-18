@@ -1,7 +1,7 @@
 ﻿// #include "statFEMpp.h"
 
 #include <iostream>
-#include "Node.h"
+#include "Point.h"
 int main(int argc, char **argv)
 {
 
@@ -13,10 +13,10 @@ int main(int argc, char **argv)
 
     //    Num n(35);
     //    std::cout << n.getNum() << std::endl;
-    Node<double> myNode({1, 2, 3});
+    Point<double> myNode({0, 0, 0});
     std::cout << myNode.getCoordinates() << std::endl;
 
-    myNode.setCoordinates({1, 22, 33});
+    myNode.setCoordinates({1, 0, 0});
 
     std::cout << myNode.getCoordinates() << std::endl;
 
