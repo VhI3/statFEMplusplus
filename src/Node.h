@@ -1,6 +1,7 @@
 //
 // Created by vahab on 3/30/23.
 //
+// The decleration of the classes is performed in a *.h file
 #pragma once
 #include <Eigen/Dense>
 #include <Eigen/Core>
