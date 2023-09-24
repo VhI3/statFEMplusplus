@@ -4,8 +4,6 @@
 #pragma once
 #include <Eigen/Dense>
 #include <Eigen/Core>
-// #include "external/eigen/eigen-src/Eigen/Dense"
-// #include "external/eigen/eigen-src/Eigen/Core"
 
 template <class T>
 class Node
