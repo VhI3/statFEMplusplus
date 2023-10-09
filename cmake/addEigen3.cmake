@@ -1,26 +1,33 @@
-# - Try to add Eigen3 lib
+# - Try to find Eigen3 or download it if not found
 #
-# This module tries to find the Eigen3 lib if it is installed.
-# If it is not installed, the lib will be download from
+# This script tries to find a locally installed copy of Eigen3 (minimum version 3.3).
+# If Eigen3 is not found, it will download the library from
 # https://gitlab.com/libeigen/eigen
-# and will be added to external folder.
+# and place it in an external folder.
 
-# First cmake tries to find the installed Eigen with minimum version 3.3
-# If it is not found, then the latest version will be downloaded and added to project.
-find_package(Eigen3 3.3 REQUIRED CONFIG) # with argument "REQUIRED" doesn't work correctly.
+# Attempt to find a local installation of Eigen3 (minimum version 3.3)
+find_package(Eigen3 3.3 CONFIG)
 
-if(TARGET Eigen3::Eigen)
-    message(STATUS "VHI3 Comment: Eigen3 v${EIGEN3_VERSION_STRING} found in ${EIGEN3_INCLUDE_DIR}")
+if(EIGEN3_FOUND)
+    message(STATUS "Eigen3 v${EIGEN3_VERSION_STRING} found in ${EIGEN3_INCLUDE_DIR}")
 else()
     include(FetchContent)
-    set(FETCHCONTENT_BASE_DIR "${PROJECT_SOURCE_DIR}/external/eigen")
-    FetchContent_Declare(Eigen
+    FetchContent_Declare(
+        Eigen
         GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
-        GIT_TAG origin/master)
+        GIT_TAG 3.3.9  # replace with a specific version or tag
+        SOURCE_DIR "${PROJECT_SOURCE_DIR}/external/eigen"
+        BINARY_DIR "${PROJECT_BINARY_DIR}/external/eigen-build"
+    )
     FetchContent_GetProperties(Eigen)
-
     if(NOT eigen_POPULATED)
         FetchContent_Populate(Eigen)
-        add_subdirectory(${eigen_SOURCE_DIR} ${eigen_BINARY_DIR} EXCLUDE_FROM_ALL)
+        set(EIGEN3_INCLUDE_DIR ${eigen_SOURCE_DIR})
     endif()
+
+    # Create an INTERFACE target for Eigen3
+    add_library(Eigen3::Eigen INTERFACE IMPORTED)
+    set_target_properties(Eigen3::Eigen PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${EIGEN3_INCLUDE_DIR}"
+    )
 endif()

@@ -1,6 +1,3 @@
-//
-// Created by vahab on 3/30/23.
-//
 #pragma once
 #include <Eigen/Dense>
 #include <Eigen/Core>
@@ -9,11 +6,16 @@ template <class T>
 class Node
 {
 public:
-    explicit Node(const Eigen::Vector<T, 3> &coordinates);
+	explicit Node(const Eigen::Matrix<T, 3, 1>& coordinates) : coordinates_(coordinates) {}
 
-    const Eigen::Vector<T, 3> &getCoordinates() const;
-    void setCoordinates(const Eigen::Vector<T, 3> &coordinates);
+	const Eigen::Matrix<T, 3, 1>& getCoordinates() const {
+		return coordinates_;
+	}
+
+	void setCoordinates(const Eigen::Matrix<T, 3, 1>& coordinates) {
+		coordinates_ = coordinates;
+	}
 
 private:
-    Eigen::Vector<T, 3> m_coordinates;
+	Eigen::Matrix<T, 3, 1> coordinates_;
 };
