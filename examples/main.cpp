@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     //    Num n(35);
     //    std::cout << n.getNum() << std::endl;
     
-    Node<double> myNode({1., 2, 3});
+  Node<double> myNode({1., 2, 3});
     std::cout << myNode.getCoordinates() << std::endl;
 
     myNode.setCoordinates({1, 22, 33});

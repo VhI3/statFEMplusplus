@@ -34,3 +34,7 @@
 # Folders
 cmake-build-debug
 build
+external
+
+# IDE folders
+*.vs

@@ -6,15 +6,11 @@ template <class T>
 class Node
 {
 public:
-	explicit Node(const Eigen::Matrix<T, 3, 1>& coordinates) : coordinates_(coordinates) {}
+	explicit Node(const Eigen::Matrix<T, 3, 1>& coordinates);
 
-	const Eigen::Matrix<T, 3, 1>& getCoordinates() const {
-		return coordinates_;
-	}
+	const Eigen::Matrix<T, 3, 1>& getCoordinates() const;
 
-	void setCoordinates(const Eigen::Matrix<T, 3, 1>& coordinates) {
-		coordinates_ = coordinates;
-	}
+	void setCoordinates(const Eigen::Matrix<T, 3, 1>& coordinates);
 
 private:
 	Eigen::Matrix<T, 3, 1> coordinates_;
