@@ -6,12 +6,16 @@ template <class T>
 class Node
 {
 public:
-	explicit Node(const Eigen::Matrix<T, 3, 1> &coordinates);
+	explicit Node(const Eigen::Matrix<T, 3, 1> &position);
 
-	const Eigen::Matrix<T, 3, 1> &getCoordinates() const;
+	const Eigen::Matrix<T, 3, 1> &getPosition() const;
 
-	void setCoordinates(const Eigen::Matrix<T, 3, 1> &coordinates);
+	void setPosition(const Eigen::Matrix<T, 3, 1> &position);
+
+	void setAvailableDofs(const Eigen::VectorXi& dofs);
 
 private:
-	Eigen::Matrix<T, 3, 1> coordinates_;
+	Eigen::Matrix<T, 3, 1> position_;
+	Eigen::VectorXi availableDofs_;
+
 };

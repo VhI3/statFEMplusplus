@@ -14,10 +14,10 @@ int main(int argc, char **argv)
   //    std::cout << n.getNum() << std::endl;
 
   Node<double> myNode({1., 2, 3});
-  std::cout << myNode.getCoordinates() << std::endl;
+  std::cout << myNode.getPosition() << std::endl;
 
-  myNode.setCoordinates({1, 22, 33});
-  std::cout << myNode.getCoordinates() << std::endl;
+  myNode.setPosition({1, 22, 33});
+  std::cout << myNode.getPosition() << std::endl;
 
   std::cout << "Test windows" << std::endl;
 
