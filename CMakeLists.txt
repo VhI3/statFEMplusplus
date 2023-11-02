@@ -17,9 +17,9 @@ set(PROJECT_SOURCE_DIR src)
 set(PROJECT_EXAMPLES_DIR examples)
 
 # List of source and header files
-set(PROJECT_EXAMPLES 
-    ${PROJECT_EXAMPLES_DIR}/main.cpp 
-    ${PROJECT_SOURCE_DIR}/node/Node.cpp 
+set(PROJECT_EXAMPLES
+    ${PROJECT_EXAMPLES_DIR}/main.cpp
+    ${PROJECT_SOURCE_DIR}/node/Node.cpp
     ${PROJECT_SOURCE_DIR}/node/Node.hpp
     ${PROJECT_SOURCE_DIR}/node/Node.h
     ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.h
@@ -38,14 +38,14 @@ include(addEigen3)
 add_executable(${PROJECT_NAME} ${PROJECT_EXAMPLES})
 
 # Link the executable target against Eigen3
-target_link_libraries(${PROJECT_NAME} 
-    PUBLIC 
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
     Eigen3::Eigen
 )
 
 # Specify the include directories
-target_include_directories(${PROJECT_NAME} 
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>  # for building
-    $<INSTALL_INTERFACE:include>  # for installation
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> # for building
+    $<INSTALL_INTERFACE:include> # for installation
 )

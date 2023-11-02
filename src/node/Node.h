@@ -13,9 +13,9 @@ public:
 
 	void setPosition(const Eigen::Matrix<T, 3, 1> &position);
 
-	void setAvailableDofs(const Eigen::VectorXi& dofs);
+	void setAvailableDofs(const Eigen::VectorXi &dofs);
 
-	void setConstraint(const Constraint& constraint);
+	void setConstraint(const Constraint &constraint);
 
 private:
 	Eigen::Matrix<T, 3, 1> position_;
