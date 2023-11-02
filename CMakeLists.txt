@@ -19,9 +19,13 @@ set(PROJECT_EXAMPLES_DIR examples)
 # List of source and header files
 set(PROJECT_EXAMPLES 
     ${PROJECT_EXAMPLES_DIR}/main.cpp 
-    ${PROJECT_SOURCE_DIR}/Node.cpp 
-    ${PROJECT_SOURCE_DIR}/Node.hpp 
-    ${PROJECT_SOURCE_DIR}/Node.h
+    ${PROJECT_SOURCE_DIR}/node/Node.cpp 
+    ${PROJECT_SOURCE_DIR}/node/Node.hpp
+    ${PROJECT_SOURCE_DIR}/node/Node.h
+    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.h
+    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.hpp
+    ${PROJECT_SOURCE_DIR}/boundary/Constraint.h
+    ${PROJECT_SOURCE_DIR}/boundary/Constraint.hpp
 )
 
 # Directory for external libraries

@@ -7,6 +7,8 @@
 #include <iostream>
 // #include <Eigen/Dense>
 // #include <Eigen/Core>
-#include "Node.h"
+#include "node/Node.h"
+#include "boundary/BoundaryCase.h"
+#include "boundary/Constraint.h"
 // TODO: Reference additional headers your program requires here.
 #endif // SRC_STATFEMPP_H

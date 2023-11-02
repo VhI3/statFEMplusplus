@@ -1,6 +1,7 @@
 #pragma once
 #include "Node.h"
 
+
 // The constructor of template class Node.
 template <class T>
 Node<T>::Node(const Eigen::Matrix<T, 3, 1> &position) : position_(position) {}
@@ -26,4 +27,10 @@ void Node<T>::setAvailableDofs(const Eigen::VectorXi& dofs) {
 	}
 	// Set the dofs
 	availableDofs_ = dofs;
+}
+
+
+template <class T>
+void Node<T>::setConstraint(const Constraint& constraint) {
+	constraint_ = constraint;
 }
