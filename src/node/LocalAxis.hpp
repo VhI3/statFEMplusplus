@@ -24,15 +24,28 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include "Constraint.h"
+#include "node/LocalAxis.h"
 
-Constraint::Constraint(const std::string &name, BoundaryCase *boundaryCase, const std::array<bool, 6> &constraints)
-	: name_(name), boundaryCase_(boundaryCase), free_(constraints) {}
+LocalAxis::LocalAxis(const std::string &name, int type, const Eigen::VectorXd &values) : name_(name), type_(validateType(type)), values_(validateValues(type, values)){};
 
-void Constraint::setName(const std::string &name) { name_ = name; }
-void Constraint::setConstraints(const std::array<bool, 6> &free) { free_ = free; }
-void Constraint::setBoundaryCase(BoundaryCase *boundaryCase) { boundaryCase_ = boundaryCase; }
+static int validateType(int type)
+{
+    if (type < 0 || type > 1)
+    {
+        throw std::invalid_argument("Illegal type for local axis!");
+    }
+    return type;
+}
 
-const std::string &Constraint::getName() const { return name_; }
-const std::array<bool, 6> &Constraint::getConstraints() const { return free_; }
-BoundaryCase *Constraint::getBoundaryCase() const { return boundaryCase_; }
+static Eigen::VectorXd validateValues(int type, const Eigen::VectorXd &values)
+{
+    if ((type == LocalAxis::POINT && values.size() != 3) || (type == LocalAxis::LINE && values.size() != 1))
+    {
+        throw std::invalid_argument("Illegal dimension of local axis array!");
+    }
+    return values;
+}
+
+const std::string &LocalAxis::getName() const { return name_; }
+int LocalAxis::getType() const { return type_; }
+const Eigen::VectorXd &LocalAxis::getValues() const { return values_; }
