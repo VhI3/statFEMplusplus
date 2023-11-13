@@ -1,12 +1,12 @@
-# statFEMpp
+# statFEM++
 
-Welcome to the statFEMpp Project! This is a modern C++ 17 code for implementing a deterministic finite element method (FEM) with multiple advanced features.
+Welcome to the statFEM++ Project! This is a modern objected-oriented C++ 17 code for implementing a deterministic finite element method (FEM) with multiple advanced features.
 
 ## Features
 
-1. **Element Library:** This code is designed to handle various types of elements including beam element, shell, 1D Tension bar, Trusses, 2D rectangular element, and 3D solid element. There is an extensive library of FEM elements to choose from.
+1. **Element Library:** This code is designed to handle various elements, including beam elements, shells, 1D Tension bars, Trusses, 2D rectangular elements, and 3D solid elements. There is an extensive library of FEM elements to choose from.
 
-2. **Shape Functions:** The polynomial order of shape functions of elements can be increased in each direction to an arbitrary order, providing flexibility in modeling.
+2. **Shape Functions:** The polynomial order of shape functions of elements can be increased to an arbitrary order in each direction, providing modeling flexibility.
 
 3. **Material Models Library:** Our library includes a variety of material models such as Linear Elastic, St. Veant Kirchhoff, and Hyperelastic material models like Moony Rivlin, Neo Hookean, and Ogden.
 
@@ -14,7 +14,7 @@ Welcome to the statFEMpp Project! This is a modern C++ 17 code for implementing 
 
 5. **Stochastic FEM:** We implement a stochastic FEM for dealing with uncertain material parameters. The code includes sampling methods like Monte Carlo simulation to quantify the uncertainties in output displacement, strains, and stresses.
 
-6. **Polynomial Chaos:** Both Intrusive and Non-Intrusive polynomial chaos are implemented as surrogate models, providing a more feasible alternative to the computationally expensive Monte Carlo simulation.
+6. **Polynomial Chaos:** Intrusive and Non-Intrusive polynomial chaos are implemented as surrogate models, providing a more feasible alternative to the computationally expensive Monte Carlo simulation.
 
 7. **Bayesian Updating:** The stochastic FEM (SFEM) is used as prior knowledge for the statistical FEM (statFEM) in a Bayesian formalism to update the displacement field in light of observation data.
 
@@ -22,7 +22,7 @@ Welcome to the statFEMpp Project! This is a modern C++ 17 code for implementing 
 
 ## Future Goals
 
-The rest of the goals for the statFEMpp project will be announced soon. Stay tuned!
+The rest of the goals for the statFEM++ project will be announced soon. Stay tuned!
 
 ## Contributing
 
@@ -36,4 +36,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [Your Name] - [Your Email] - [Your LinkedIn/Twitter/GitHub]
 
-Project Link: [https://github.com/yourusername/statFEMpp](https://github.com/yourusername/statFEMpp)
+Project Link: [https://github.com/yourusername/statFEMplusplus](https://github.com/yourusername/statFEMplusplus)
