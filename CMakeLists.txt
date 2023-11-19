@@ -21,15 +21,14 @@ set(PROJECT_EXAMPLES
     ${PROJECT_EXAMPLES_DIR}/main.cpp
     ${PROJECT_SOURCE_DIR}/node/Node.cpp
     ${PROJECT_SOURCE_DIR}/node/Node.hpp
-    ${PROJECT_SOURCE_DIR}/node/Node.h
+    ${PROJECT_SOURCE_DIR}/node/LocalAxis.cpp
     ${PROJECT_SOURCE_DIR}/node/LocalAxis.hpp
-    ${PROJECT_SOURCE_DIR}/node/LocalAxis.h    
-    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.h
     ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/Constraint.h
+    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.cpp
     ${PROJECT_SOURCE_DIR}/boundary/Constraint.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.h
+    ${PROJECT_SOURCE_DIR}/boundary/Constraint.cpp
     ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.hpp
+    ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.cpp
 )
 
 # Directory for external libraries

@@ -1,51 +1,94 @@
 /*
 MIT License
 
-Copyright (c) 2023 VHI3 
+Copyright (c) 2023 VHI3
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of 
-this software and associated documentation files (the "Software"), to deal in 
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
 the Software without restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the 
-Software, and to permit persons to whom the Software is furnished to do so, 
+copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all 
+The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include "node/LocalAxis.h"
+#include <string> // For the string
+#include <Eigen/Dense>
 
-LocalAxis::LocalAxis(const std::string &name, int type, const Eigen::VectorXd &values) : name_(name), type_(validateType(type)), values_(validateValues(type, values)){};
-
-static int validateType(int type)
+/**
+ * Class for Local axis systems of nodes and one dimensional elements.
+ *
+ * @author VHI3
+ *
+ */
+class LocalAxis
 {
-    if (type < 0 || type > 1)
-    {
-        throw std::invalid_argument("Illegal type for local axis!");
-    }
-    return type;
-}
+public:
+	// Static constants for the type of local axis
+	static const int POINT = 0;
+	static const int LINE = 1;
 
-static Eigen::VectorXd validateValues(int type, const Eigen::VectorXd &values)
-{
-    if ((type == LocalAxis::POINT && values.size() != 3) || (type == LocalAxis::LINE && values.size() != 1))
-    {
-        throw std::invalid_argument("Illegal dimension of local axis array!");
-    }
-    return values;
-}
+	/** An argument-free (default) constructor **/
+	explicit LocalAxis() : name_(), type_(), values_() {}
 
-const std::string &LocalAxis::getName() const { return name_; }
-int LocalAxis::getType() const { return type_; }
-const Eigen::VectorXd &LocalAxis::getValues() const { return values_; }
+	/**
+	 * Creates LocalAxis object.
+	 *
+	 * @param name
+	 *            Name of local axis.
+	 * @param type
+	 *            The type of local axis.
+	 * @param values
+	 *            Rotation angles of local axis (point -> length = 3, line ->
+	 *            length = 1). For point type, the angle sequence is rotations
+	 *            about x, y' and z'' in degrees, respectively. For line type,
+	 *            the axial rotation in degrees.
+	 */
+	LocalAxis(const std::string &name, int type, const Eigen::VectorXd &values);
+
+	/**
+	 * Returns name of the local axis.
+	 *
+	 * @return Name of local axis.
+	 */
+	const std::string &getName() const;
+
+	/**
+	 * Returns type of the local axis.
+	 *
+	 * @return Type of local axis.
+	 */
+	int getType() const;
+
+	/**
+	 * Returns rotation angles of the local axis.
+	 *
+	 * @return Rotation angles of the local axis (point -> length = 3, line ->
+	 *         length = 1).
+	 */
+	const Eigen::VectorXd &getValues() const;
+
+	static int validateType(int type);
+
+	static Eigen::VectorXd validateValues(int type, const Eigen::VectorXd &values);
+
+private:
+	// The name of local axis.
+	std::string name_;
+	// The type of local axis.
+	int type_;
+	// The values of local axis (point -> length = 3, line -> length = 1).
+	Eigen::VectorXd values_;
+};

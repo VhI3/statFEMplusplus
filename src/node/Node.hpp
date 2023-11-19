@@ -1,64 +1,104 @@
 /*
 MIT License
 
-Copyright (c) 2023 VHI3 
+Copyright (c) 2023 VHI3
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of 
-this software and associated documentation files (the "Software"), to deal in 
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
 the Software without restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the 
-Software, and to permit persons to whom the Software is furnished to do so, 
+copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all 
+The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include "Node.h"
+#include <Eigen/Dense>
+#include <Eigen/Core>
+#include <boundary/Constraint.hpp>
+#include <node/LocalAxis.hpp>
+#include <boundary/NodalMechLoad.hpp>
+#include <vector>
 
-// The constructor of template class Node.
+/**
+ * Class for Node.
+ *
+ * @author VHI3
+ *
+ */
 template <class T>
-Node<T>::Node(const Eigen::Matrix<T, 3, 1> &position) : position_(position) {}
-
-// It gives the coordinates of a Node.
-template <class T>
-const Eigen::Matrix<T, 3, 1> &Node<T>::getPosition() const
+class Node
 {
-	return position_;
-}
+public:
+	/** Static variable for the coordinate system of node. */
+	static const int GLOBAL = 0;
+	static const int LOCAL = 1;
 
-// It sets the coordinates of a Node.
-template <class T>
-void Node<T>::setPosition(const Eigen::Matrix<T, 3, 1> &position)
-{
-	position_ = position;
-}
+	/**
+	 * Creates Node.
+	 *
+	 * @param pos
+	 *           The position vector of a node with x,y and z coordinates.
+	 */
+	explicit Node(const Eigen::Matrix<T, 3, 1> &position);
 
-template <class T>
-void Node<T>::setAvailableDofs(const Eigen::VectorXi &dofs)
-{
-	// Check the size of the vector
-	if (dofs.size() != 6)
-	{
-		// Handle the error (e.g., throw an exception)
-		throw std::invalid_argument("Illegal dimension for available dofs!");
-	}
-	// Set the dofs
-	availableDofs_ = dofs;
-}
+	/**
+	 * Gets position vector of the node.
+	 */
+	const Eigen::Matrix<T, 3, 1> &getPosition() const;
 
-template <class T>
-void Node<T>::setConstraint(const Constraint &constraint)
-{
-	constraint_ = constraint;
-}
+	/**
+	 * Sets position vector to node.
+	 *
+	 * @param pos
+	 *            The position vector to be set.
+	 */
+	void setPosition(const Eigen::Matrix<T, 3, 1> &position);
+
+	/**
+	 * Sets available dofs to the node.
+	 *
+	 * @param dofs
+	 *            Array storing the dofs of the node. Dofs given as -1 are
+	 *            considered as unavailable.
+	 */
+	void setAvailableDofs(const Eigen::VectorXi &dofs);
+
+	/**
+	 * Sets constraint to node.
+	 *
+	 * @param constraint
+	 *            Constraint to be applied.
+	 */
+	void setConstraint(const Constraint &constraint);
+
+private:
+	/** The position vector of node. */
+	Eigen::Matrix<T, 3, 1> position_;
+
+	/** Array for storing avaible dofs of node. */
+	Eigen::VectorXi availableDofs_;
+
+	/** The constraint of node. */
+	Constraint constraint_;
+
+	/** The transformation matrix of node. */
+	Eigen::MatrixXd trans_;
+
+	/** Vector for storing mechanical loads of node. */
+    std::vector<NodalMechLoad> mechLoads_;
+
+	/** The local axis system of node. */
+	LocalAxis localAxis_;
+};

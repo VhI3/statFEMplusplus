@@ -1,9 +1,0 @@
-{
-    "grammarly.selectors": [
-        {
-            "language": "cpp",
-            "scheme": "file",
-            "pattern": "src/boundary/NodalMechLoad.h"
-        }
-    ]
-}

@@ -24,10 +24,18 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include "BoundaryCase.h"
 
-BoundaryCase::BoundaryCase(const std::string &name) : name_(name){};
+#include <string> // For std::string
 
-void BoundaryCase::setName(const std::string &name) { name_ = name; }
+class BoundaryCase
+{
+public:
+	explicit BoundaryCase(const std::string &name);
 
-const std::string &BoundaryCase::getName() const { return name_; }
+	void setName(const std::string &name);
+
+	const std::string &getName() const;
+
+private:
+	std::string name_;
+};

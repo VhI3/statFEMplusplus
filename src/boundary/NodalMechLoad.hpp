@@ -24,38 +24,106 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include <boundary/NodalMechLoad.h>
+#include <Eigen/Dense>
+#include <string>
+#include <stdexcept>
+#include <boundary/BoundaryCase.hpp>
+// Include BoundaryCase class or declaration here.
 
-NodalMechLoad::NodalMechLoad(const std::string &name, const BoundaryCase &boundaryCase, const Eigen::VectorXd &components)
-    : name_(name), boundaryCase_(boundaryCase), components_(validateComponents(components)), scale_(1.0), coordinateSystem_(NodalMechLoad::GLOBAL) {}
-
-void NodalMechLoad::setBoundaryCase(const BoundaryCase &boundaryCase) { boundaryCase_ = boundaryCase; }
-
-void NodalMechLoad::setCoordinateSystem(int coordinateSystem)
+class NodalMechLoad
 {
-    if (coordinateSystem < GLOBAL || coordinateSystem > LOCAL)
-    {
-        throw std::invalid_argument("Illegal assignment for coordinate system!");
-    }
-    coordinateSystem_ = coordinateSystem;
-}
+public:
+    // Static variables for the coordinate system of load
+    static const int GLOBAL = 0;
+    static const int LOCAL = 1;
 
-void NodalMechLoad::setLoadingScale(double scale) { scale_ = scale; }
+    /**
+     * Creates load.
+     *
+     * @param name
+     *            The name of nodal mechanical load.
+     * @param boundaryCase
+     *            The boundary case of nodal mechanical load.
+     * @param components
+     *            The component vector of load. It has six components; the first three
+     *            are forces; the last three are moments.
+     */
+    NodalMechLoad(const std::string &name, const BoundaryCase &boundaryCase, const Eigen::VectorXd &components);
 
-const std::string &NodalMechLoad::getName() const { return name_; }
+    /**
+     * Sets boundary case to nodal mechanical load.
+     *
+     * @param boundaryCase
+     *            The boundary case to be set.
+     */
+    void setBoundaryCase(const BoundaryCase &boundaryCase);
 
-const BoundaryCase &NodalMechLoad::getBoundaryCase() const { return boundaryCase_; }
+    /**
+     * Sets coordinate system of nodal mechanical load.
+     *
+     * @param coordinateSystem
+     *            The nodal coordinate system to be set.
+     */
+    void setCoordinateSystem(int coordinateSystem);
 
-Eigen::VectorXd NodalMechLoad::getComponents() const { return components_ * scale_; }
+    /**
+     * Sets scaling factor for loading values.
+     *
+     * @param scale
+     *            The scaling factor for loading values.
+     */
+    void setLoadingScale(double scale);
 
-int NodalMechLoad::getCoordinateSystem() const { return coordinateSystem_; }
+    /**
+     * Returns the name of nodal mechanical load.
+     *
+     * @return The name of nodal mechanical load.
+     */
+    const std::string &getName() const;
 
-/** Check the dimenson of the vector. **/
-static Eigen::VectorXd validateComponents(const Eigen::VectorXd &components)
-{
-    if (components.size() != 6)
-    {
-        throw std::invalid_argument("Illegal dimension of load vector!");
-    }
-    return components;
-}
+    /**
+     * Returns the boundary case of nodal mechanical load.
+     *
+     * @return The boundary case of nodal mechanical load.
+     */
+    const BoundaryCase &getBoundaryCase() const;
+
+    /**
+     * Returns the components vector of load.
+     *
+     * @return The components vector of load.
+     */
+    Eigen::VectorXd getComponents() const;
+
+    /**
+     * Returns the coordinate system of load.
+     *
+     * @return The coordinate system of load.
+     */
+    int getCoordinateSystem() const;
+
+    /**
+     * Check the dimension of the load vector.
+     *
+     * @param components
+     *
+     * @return The component if the dimension is correct.
+     */
+    static Eigen::VectorXd validateComponents(const Eigen::VectorXd &components);
+
+private:
+    /** The name of nodal mechanical load. */
+    std::string name_;
+
+    /** The boundary case of displacement load. */
+    BoundaryCase boundaryCase_;
+
+    /** The component vector of load. */
+    Eigen::VectorXd components_;
+
+    /** The value for scaling loading values. */
+    double scale_;
+
+    /** The coordinate system of load. */
+    int coordinateSystem_;
+};

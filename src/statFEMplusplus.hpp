@@ -1,4 +1,4 @@
-/*
+﻿/*
 MIT License
 
 Copyright (c) 2023 VHI3 
@@ -23,19 +23,18 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+// statFEMPP.h : Include file for standard system include files,
+// or project specific include files.
 
-#include <string> // For std::string
+#ifndef SRC_STATFEMPLUSPLUS_HPP
+#define SRC_STATFEMPLUSPLUS_HPP
 
-class BoundaryCase
-{
-public:
-	explicit BoundaryCase(const std::string &name);
-
-	void setName(const std::string &name);
-
-	const std::string &getName() const;
-
-private:
-	std::string name_;
-};
+#include <iostream>
+// #include <Eigen/Dense>
+// #include <Eigen/Core>
+#include "node/Node.hpp"
+#include "boundary/BoundaryCase.hpp"
+#include "boundary/Constraint.hpp"
+#include "node/LocalAxis.hpp"
+// TODO: Reference additional headers your program requires here.
+#endif // SRC_STATFEMPLUSPLUS_HPP
