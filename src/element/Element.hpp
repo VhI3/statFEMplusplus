@@ -59,5 +59,5 @@ protected:
     static const int R3 = 5;
 
 private:
-    Material material;
+    Material material_;
 }
