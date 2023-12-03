@@ -106,7 +106,7 @@ public:
      * Returns the stiffness matrix (C).
      *
      * @param type
-     *            The state (type) of stiffness matrix.
+     *            The state (type) of the stiffness matrix.
      * @return The stiffness matrix.
      */
     virtual Eigen::MatrixXd getC(int type) const = 0;
@@ -115,16 +115,16 @@ public:
      * Returns the compliance matrix (S = C^-1).
      *
      * @param type
-     *            The state (type) of compliance matrix.
+     *            The state (type) of the compliance matrix.
      * @return The compliance matrix.
      */
     virtual Eigen::MatrixXd getS(int type) const = 0;
 
     /**
-     * Returns the thermal influence vector of material.
+     * Returns the thermal influence vector of the material.
      *
      * @param type
-     *            The state (type) of influence vector.
+     *            The state (type) of the influence vector.
      * @return The thermal influence vector of material.
      */
     virtual Eigen::VectorXd getAlpha(int type) const = 0;

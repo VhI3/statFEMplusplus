@@ -59,5 +59,8 @@ protected:
     static const int R3 = 5;
 
 private:
+    /** The material of element. */
     Material material_;
+
+
 }
