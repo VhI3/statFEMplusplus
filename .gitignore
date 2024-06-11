@@ -39,6 +39,5 @@ external
 # IDE folders
 *.vs
 /out
-./cache
-
 /.cache
+compile_commands.json
