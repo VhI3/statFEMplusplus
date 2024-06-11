@@ -29,6 +29,8 @@ set(PROJECT_EXAMPLES
     ${PROJECT_SOURCE_DIR}/boundary/Constraint.cpp
     ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.hpp
     ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.cpp
+    ${PROJECT_SOURCE_DIR}/boundary/ElementTemp.hpp
+    ${PROJECT_SOURCE_DIR}/boundary/ElementTemp.cpp
     ${PROJECT_SOURCE_DIR}/material/Material.hpp
     ${PROJECT_SOURCE_DIR}/material/Material.cpp
     ${PROJECT_SOURCE_DIR}/element/Element.hpp
