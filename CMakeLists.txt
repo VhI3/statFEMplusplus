@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.5...3.21 FATAL_ERROR)
 
 # Project name and the type of the project (C++ project here)
-project(statFEMpp LANGUAGES CXX)
+project(statFEMplusplus LANGUAGES CXX)
 
 # Add the cmake/ directory to the CMake module path (for FindEigen3.cmake)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -20,6 +20,8 @@ include(addEigen3)
 
 # Enable testing
 enable_testing()
+
+
 
 # Add subdirectories
 add_subdirectory(src)
