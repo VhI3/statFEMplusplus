@@ -12,48 +12,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
-# Set source directory and examples directory
-set(PROJECT_SOURCE_DIR src)
-set(PROJECT_EXAMPLES_DIR examples)
-
-# List of source and header files
-set(PROJECT_EXAMPLES
-    ${PROJECT_EXAMPLES_DIR}/main.cpp
-    ${PROJECT_SOURCE_DIR}/node/Node.cpp
-    ${PROJECT_SOURCE_DIR}/node/Node.hpp
-    ${PROJECT_SOURCE_DIR}/node/LocalAxis.cpp
-    ${PROJECT_SOURCE_DIR}/node/LocalAxis.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/BoundaryCase.cpp
-    ${PROJECT_SOURCE_DIR}/boundary/Constraint.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/Constraint.cpp
-    ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/NodalMechLoad.cpp
-    ${PROJECT_SOURCE_DIR}/boundary/ElementTemp.hpp
-    ${PROJECT_SOURCE_DIR}/boundary/ElementTemp.cpp
-    ${PROJECT_SOURCE_DIR}/material/Material.hpp
-    ${PROJECT_SOURCE_DIR}/material/Material.cpp
-    ${PROJECT_SOURCE_DIR}/element/Element.hpp
-)
-
 # Directory for external libraries
 set(PROJECT_EXTERNAL_LIBRARIES_DIR external)
 
 # Include the script for adding Eigen3
 include(addEigen3)
 
-# Define the executable target and its source files
-add_executable(${PROJECT_NAME} ${PROJECT_EXAMPLES})
+# Enable testing
+enable_testing()
 
-# Link the executable target against Eigen3
-target_link_libraries(${PROJECT_NAME}
-    PUBLIC
-    Eigen3::Eigen
-)
+# Add subdirectories
+add_subdirectory(src)
+add_subdirectory(test)
 
-# Specify the include directories
-target_include_directories(${PROJECT_NAME}
-    PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> # for building
-    $<INSTALL_INTERFACE:include> # for installation
-)

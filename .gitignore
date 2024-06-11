@@ -41,3 +41,4 @@ external
 /out
 /.cache
 compile_commands.json
+indent.log
