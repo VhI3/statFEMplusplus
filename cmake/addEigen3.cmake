@@ -9,25 +9,25 @@
 find_package(Eigen3 3.3 CONFIG)
 
 if(EIGEN3_FOUND)
-    message(STATUS "Eigen3 v${EIGEN3_VERSION_STRING} found in ${EIGEN3_INCLUDE_DIR}")
+  message(STATUS "Eigen3 v${EIGEN3_VERSION_STRING} found in ${EIGEN3_INCLUDE_DIR}")
 else()
-    include(FetchContent)
-    FetchContent_Declare(
+  include(FetchContent)
+  FetchContent_Declare(
         Eigen
         GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
         GIT_TAG 3.3.9  # replace with a specific version or tag
         SOURCE_DIR "${PROJECT_SOURCE_DIR}/external/eigen"
         BINARY_DIR "${PROJECT_BINARY_DIR}/external/eigen-build"
     )
-    FetchContent_GetProperties(Eigen)
-    if(NOT eigen_POPULATED)
-        FetchContent_Populate(Eigen)
-        set(EIGEN3_INCLUDE_DIR ${eigen_SOURCE_DIR})
-    endif()
+  FetchContent_GetProperties(Eigen)
+  if(NOT eigen_POPULATED)
+    FetchContent_Populate(Eigen)
+    set(EIGEN3_INCLUDE_DIR ${eigen_SOURCE_DIR})
+  endif()
 
-    # Create an INTERFACE target for Eigen3
-    add_library(Eigen3::Eigen INTERFACE IMPORTED)
-    set_target_properties(Eigen3::Eigen PROPERTIES
+  # Create an INTERFACE target for Eigen3
+  add_library(Eigen3::Eigen INTERFACE IMPORTED)
+  set_target_properties(Eigen3::Eigen PROPERTIES
         INTERFACE_INCLUDE_DIRECTORIES "${EIGEN3_INCLUDE_DIR}"
     )
 endif()

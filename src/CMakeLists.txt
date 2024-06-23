@@ -22,11 +22,19 @@ set(PROJECT_SOURCES
 # Define the library target
 add_library(statFEMpp_lib ${PROJECT_SOURCES})
 
+# find_package(Matplot++ REQUIRED)
+
+# target_link_libraries(<your target> Matplot++::matplot)
+
+
 # Link the library target against Eigen3
 target_link_libraries(statFEMpp_lib
     PUBLIC
     Eigen3::Eigen
+    # Matplot++::matplot
 )
+# add_executable(my_target main.cpp)
+# target_link_libraries(my_target PUBLIC matplot)
 
 # Specify the include directories
 target_include_directories(statFEMpp_lib

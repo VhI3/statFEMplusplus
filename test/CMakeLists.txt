@@ -1,14 +1,22 @@
 # test/CMakeLists.txt
 
-# Add the executable for the test
-add_executable(testBoundaryCase testBoundaryCase.cpp)
+# Include directories for test targets
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
-# Link the BoundaryCase library and Eigen to the test executable
-target_link_libraries(testBoundaryCase
-    PRIVATE
-    statFEMpp_lib
-    Eigen3::Eigen
+
+# Add test executable for testBoundaryCase
+add_executable(testBoundaryCase
+    boundary/testBoundaryCase.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/BoundaryCase.cpp
 )
 
-# Add a test
-add_test(NAME BoundaryCaseTest COMMAND testBoundaryCase)
+# Add test executable for testConstraint
+add_executable(testConstraint
+    boundary/testConstraint.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/BoundaryCase.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/Constraint.cpp
+)
+
+# Add tests to CTest
+add_test(NAME testBoundaryCase COMMAND testBoundaryCase)
+add_test(NAME testConstraint COMMAND testConstraint)

@@ -21,9 +21,11 @@ include(addEigen3)
 # Enable testing
 enable_testing()
 
+# add_subdirectory(external/matplotplusplus)
+
+
 
 
 # Add subdirectories
 add_subdirectory(src)
 add_subdirectory(test)
-

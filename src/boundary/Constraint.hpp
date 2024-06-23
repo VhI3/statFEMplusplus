@@ -24,28 +24,30 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include <array>	 // For std::array
-#include <string>	 // For std::string
+#include <array>     // For std::array
+#include <string>    // For std::string
 #include <stdexcept> // For std::invalid_argument
-#include <boundary/BoundaryCase.hpp>
+#include "BoundaryCase.hpp" // Adjust the include path as necessary
 
 class Constraint
 {
 public:
 	explicit Constraint() : name_(), boundaryCase_(nullptr), free_{} {}
+    // Constructor
+    Constraint(const std::string &name, BoundaryCase *boundaryCase, const std::array<bool, 6> &constraints);
 
-	Constraint(const std::string &name, BoundaryCase *boundaryCase, const std::array<bool, 6> &constraints);
+    // Setters
+    void setName(const std::string &name);
+    void setConstraints(const std::array<bool, 6> &free);
+    void setBoundaryCase(BoundaryCase *boundaryCase);
 
-	void setName(const std::string &name);
-	void setConstraints(const std::array<bool, 6> &free);
-	void setBoundaryCase(BoundaryCase *boundaryCase);
-
-	const std::string &getName() const;
-	const std::array<bool, 6> &getConstraints() const;
-	BoundaryCase *getBoundaryCase() const;
+    // Getters
+    const std::string &getName() const;
+    const std::array<bool, 6> &getConstraints() const;
+    BoundaryCase* getBoundaryCase() const;
 
 private:
-	std::array<bool, 6> free_;
-	std::string name_;
-	BoundaryCase *boundaryCase_;
+    std::array<bool, 6> free_;
+    std::string name_;
+    BoundaryCase *boundaryCase_;
 };
