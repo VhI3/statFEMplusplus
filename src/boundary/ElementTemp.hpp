@@ -38,8 +38,8 @@ public:
    * @param value
    *            The value of load.
    */
-  explicit ElementTemp(const std::string &name,
-                       const BoundaryCase &boundaryCase, const double &value);
+  explicit ElementTemp(const std::string &name, BoundaryCase *boundaryCase,
+                       const double &value);
 
   /**
    * Sets boundary case to element temperature load.
@@ -47,7 +47,7 @@ public:
    * @param boundaryCase
    *              The boundary case to be set.
    */
-  void setBoundaryCase(const BoundaryCase &boundaryCase);
+  void setBoundaryCase(BoundaryCase *boundaryCase);
 
   /**
    * Sets scaling factor for loading values.
@@ -69,7 +69,7 @@ public:
    *
    * @return The boundary case of element temperature load.
    */
-  const BoundaryCase &getBoundaryCase() const;
+  BoundaryCase *getBoundaryCase() const;
 
   /**
    * Returns the loading value.
@@ -83,7 +83,7 @@ private:
   std::string name_;
 
   /** The boundary case of element temperature load. */
-  BoundaryCase boundaryCase_;
+  BoundaryCase *boundaryCase_;
 
   /** The loading value. */
   double value_;

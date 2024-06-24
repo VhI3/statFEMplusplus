@@ -17,6 +17,16 @@ add_executable(testConstraint
     ${CMAKE_SOURCE_DIR}/src/boundary/Constraint.cpp
 )
 
+
+# Add test executable for testElementTemp
+add_executable(testElementTemp
+    boundary/testElementTemp.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/BoundaryCase.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/ElementTemp.cpp
+)
+
+
 # Add tests to CTest
 add_test(NAME testBoundaryCase COMMAND testBoundaryCase)
 add_test(NAME testConstraint COMMAND testConstraint)
+add_test(NAME testElementTemp COMMAND testElementTemp)
