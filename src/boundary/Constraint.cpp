@@ -26,7 +26,8 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Constraint.hpp"
 
 // Constructor definition
-Constraint::Constraint(const std::string &name, BoundaryCase *boundaryCase,
+Constraint::Constraint(const std::string &name,
+                       const BoundaryCase &boundaryCase,
                        const std::array<bool, 6> &constraints)
     : name_(name), boundaryCase_(boundaryCase), free_(constraints) {}
 
@@ -36,12 +37,16 @@ void Constraint::setConstraints(const std::array<bool, 6> &free) {
   free_ = free;
 }
 
-void Constraint::setBoundaryCase(BoundaryCase *boundaryCase) {
+void Constraint::setBoundaryCase(const BoundaryCase &boundaryCase) {
   boundaryCase_ = boundaryCase;
 }
 
-const std::string &Constraint::getName() const { return name_; }
+const std::string &Constraint::getName() const noexcept { return name_; }
 
-const std::array<bool, 6> &Constraint::getConstraints() const { return free_; }
+const std::array<bool, 6> &Constraint::getConstraints() const noexcept {
+  return free_;
+}
 
-BoundaryCase *Constraint::getBoundaryCase() const { return boundaryCase_; }
+const BoundaryCase &Constraint::getBoundaryCase() const noexcept {
+  return boundaryCase_;
+}

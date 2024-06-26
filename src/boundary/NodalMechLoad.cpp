@@ -25,14 +25,17 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <boundary/NodalMechLoad.hpp>
 
+// This is the default constructor. The arguments are the name of the
+// NodalMechLoad, the boundaryCase, and the components.
 NodalMechLoad::NodalMechLoad(const std::string &name,
-                             const BoundaryCase &boundaryCase,
+                             BoundaryCase *boundaryCase,
                              const Eigen::VectorXd &components)
     : name_(name), boundaryCase_(boundaryCase),
       components_(validateComponents(components)), scale_(1.0),
       coordinateSystem_(NodalMechLoad::GLOBAL) {}
 
-void NodalMechLoad::setBoundaryCase(const BoundaryCase &boundaryCase) {
+// This method sets the boundaryCase to the NodalMechLoad.
+void NodalMechLoad::setBoundaryCase(BoundaryCase *boundaryCase) {
   boundaryCase_ = boundaryCase;
 }
 
@@ -47,9 +50,7 @@ void NodalMechLoad::setLoadingScale(double scale) { scale_ = scale; }
 
 const std::string &NodalMechLoad::getName() const { return name_; }
 
-const BoundaryCase &NodalMechLoad::getBoundaryCase() const {
-  return boundaryCase_;
-}
+BoundaryCase *NodalMechLoad::getBoundaryCase() const { return boundaryCase_; }
 
 Eigen::VectorXd NodalMechLoad::getComponents() const {
   return components_ * scale_;
