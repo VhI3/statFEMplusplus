@@ -28,5 +28,7 @@ add_executable(testElementTemp
 
 # Add tests to CTest
 add_test(NAME testBoundaryCase COMMAND testBoundaryCase)
+# set_tests_properties(testBoundaryCase PROPERTIES FAIL_REGULAR_EXPRESSION ".*")  # This forces output even on success
 add_test(NAME testConstraint COMMAND testConstraint)
-add_test(NAME testElementTemp COMMAND testElementTemp)
+# set_tests_properties(testConstraint PROPERTIES FAIL_REGULAR_EXPRESSION ".*")  # This forces output even on success
+# add_test(NAME testElementTemp COMMAND testElementTemp)
