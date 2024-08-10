@@ -25,11 +25,13 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "Constraint.hpp"
 
+#include <utility>
+
 // Constructor definition
-Constraint::Constraint(const std::string &name,
-                       const BoundaryCase &boundaryCase,
+Constraint::Constraint(std::string name,
+                       BoundaryCase boundaryCase,
                        const std::array<bool, 6> &constraints)
-    : name_(name), boundaryCase_(boundaryCase), free_(constraints) {}
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)), free_(constraints) {}
 
 void Constraint::setName(const std::string &name) { name_ = name; }
 

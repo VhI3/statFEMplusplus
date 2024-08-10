@@ -25,8 +25,15 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "BoundaryCase.hpp"
 
-BoundaryCase::BoundaryCase(const std::string &name) : name_(name){};
+#include <utility>
+
+BoundaryCase::BoundaryCase(std::string name) : name_(std::move(name)){};
 
 void BoundaryCase::setName(const std::string &name) { name_ = name; }
 
 const std::string &BoundaryCase::getName() const noexcept { return name_; }
+
+// Define the equality operator
+bool BoundaryCase::operator==(const BoundaryCase& other) const {
+    return name_ == other.name_;
+}

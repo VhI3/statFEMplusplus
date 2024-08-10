@@ -5,7 +5,7 @@
 // Function to test the BoundaryCase class
 void testBoundaryCase() {
   // Test case 1: Create a BoundaryCase object and check its initial state
-  std::string initialName = "Initial Boundary";
+  const std::string initialName = "Initial Boundary";
   BoundaryCase bc(initialName);
 
   // Ensure the name is correctly set
@@ -13,7 +13,7 @@ void testBoundaryCase() {
   std::cout << "Test case 1 passed: Initial name set correctly.\n";
 
   // Test case 2: Set a new name and ensure it updates correctly
-  std::string newName = "Updated Boundary";
+  const std::string newName = "Updated Boundary";
   bc.setName(newName);
 
   // Ensure the name is correctly updated
@@ -25,6 +25,7 @@ void testBoundaryCase() {
 
 int main() {
   // Run the test function
+  std::cout << "Running BoundaryCase test...\n";
   testBoundaryCase();
   return 0;
 }

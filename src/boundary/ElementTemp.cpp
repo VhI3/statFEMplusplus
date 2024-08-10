@@ -25,12 +25,13 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "boundary/BoundaryCase.hpp"
 #include <boundary/ElementTemp.hpp>
+#include <utility>
 
-ElementTemp::ElementTemp(const std::string &name, BoundaryCase *boundaryCase,
+ElementTemp::ElementTemp(std::string name, BoundaryCase boundaryCase,
                          const double &value)
-    : name_(name), boundaryCase_(boundaryCase), scale_(1.0), value_(value) {}
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)), scale_(1.0), value_(value) {}
 
-void ElementTemp::setBoundaryCase(BoundaryCase *boundaryCase) {
+void ElementTemp::setBoundaryCase(const BoundaryCase& boundaryCase) {
   boundaryCase_ = boundaryCase;
 }
 
@@ -38,6 +39,8 @@ void ElementTemp::setLoadingScale(double scale) { scale_ = scale; }
 
 const std::string &ElementTemp::getName() const { return name_; }
 
-BoundaryCase *ElementTemp::getBoundaryCase() const { return boundaryCase_; }
+const BoundaryCase &ElementTemp::getBoundaryCase() const noexcept {
+  return boundaryCase_;
+}
 
 double ElementTemp::getValue() const { return value_ * scale_; }

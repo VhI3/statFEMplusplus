@@ -29,12 +29,15 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 class BoundaryCase {
 public:
-  explicit BoundaryCase(const std::string &name);
+  explicit BoundaryCase(std::string name);
   BoundaryCase() = default; // Default constructor
 
   void setName(const std::string &name);
 
-  const std::string &getName() const noexcept;
+  [[nodiscard]] const std::string &getName() const noexcept;
+
+  // Euality operator as a member function
+  bool operator==(const BoundaryCase& other) const;
 
 private:
   std::string name_ = "default name"; // Default member initialized;

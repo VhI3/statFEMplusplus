@@ -5,9 +5,10 @@
 
 void testConstraint() {
   //  Test case 1: Create a Constraint object and check its initial state
-  std::string name = "Initial Constraint";
+  const std::string name = "Initial Constraint";
   const BoundaryCase boundaryCase("Initial BoundaryCase");
-  std::array<bool, 6> constraints = {true, false, true, false, true, false};
+  constexpr std::array<bool, 6> constraints = {true,  false, true,
+                                               false, true,  false};
 
   // Create a Constraint object
   Constraint constraint(name, boundaryCase, constraints);
@@ -25,7 +26,7 @@ void testConstraint() {
   std::cout << "Test case 1 passed: Initial BoundaryCase set correctly.\n";
 
   // Test case 2: Set a new name and ensure the name is correctly updated
-  std::string newName = "Updated Constraint";
+  const std::string newName = "Updated Constraint";
   constraint.setName(newName);
   // Ensure the name is correctly updated
   assert(constraint.getName() == newName);
@@ -34,6 +35,7 @@ void testConstraint() {
 
 int main() {
   // Run the test function
+  std::cout << "Running Constraint test...\n";
   testConstraint();
   return 0;
 }

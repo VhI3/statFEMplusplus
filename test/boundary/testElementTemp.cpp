@@ -5,17 +5,17 @@
 
 void testElementTemp() {
   // Test case 1: Create an element temperature load and check its initial state
-  std::string initialName = "Initial Element";
-  BoundaryCase boundaryCase("Fist BoundaryCase");
-  double initialValue = 0.0;
-  ElementTemp et(initialName, &boundaryCase, initialValue);
+  const std::string initialName = "Initial Element";
+  const BoundaryCase boundaryCase("Fist BoundaryCase");
+  constexpr double initialValue = 0.0;
+  const ElementTemp et(initialName, boundaryCase, initialValue);
 
   // Ensure the name is correctly set
   assert(et.getName() == initialName);
   std::cout << "Test case 1 passed: Initial name set correctly.\n";
 
   // Ensure the boundaryCase is correctly set
-  assert(et.getBoundaryCase() == &boundaryCase);
+  assert(et.getBoundaryCase() == boundaryCase);
   std::cout << "Test case 1 passed: Initial boundaryCase set correctly.\n";
 
   // Ensure the value is correctly set
@@ -25,6 +25,7 @@ void testElementTemp() {
 
 int main() {
   // Run the test function
+  std::cout << "Running ElementTemp test...\n";
   testElementTemp();
   return 0;
 }

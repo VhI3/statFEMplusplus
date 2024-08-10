@@ -26,14 +26,13 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #pragma once
 #include "BoundaryCase.hpp" // Adjust the include path as necessary
 #include <array>            // For std::array
-#include <stdexcept>        // For std::invalid_argument
 #include <string>           // For std::string
 
 class Constraint {
 public:
   // Constructors
   explicit Constraint() = default;
-  Constraint(const std::string &name, const BoundaryCase &boundaryCase,
+  Constraint(std::string name, BoundaryCase boundaryCase,
              const std::array<bool, 6> &constraints);
 
   // Setters
@@ -42,12 +41,12 @@ public:
   void setBoundaryCase(const BoundaryCase &boundaryCase);
 
   // Getters
-  const std::string &getName() const noexcept;
-  const std::array<bool, 6> &getConstraints() const noexcept;
-  const BoundaryCase &getBoundaryCase() const noexcept;
+  [[nodiscard]] const std::string &getName() const noexcept;
+  [[nodiscard]] const std::array<bool, 6> &getConstraints() const noexcept;
+  [[nodiscard]] const BoundaryCase &getBoundaryCase() const noexcept;
 
 private:
-  std::array<bool, 6> free_{};
   std::string name_;
   BoundaryCase boundaryCase_;
+  std::array<bool, 6> free_{};
 };
