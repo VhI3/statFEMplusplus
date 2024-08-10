@@ -37,7 +37,7 @@ public:
   [[nodiscard]] const std::string &getName() const noexcept;
 
   // Euality operator as a member function
-  bool operator==(const BoundaryCase& other) const;
+  bool operator==(const BoundaryCase &other) const;
 
 private:
   std::string name_ = "default name"; // Default member initialized;
