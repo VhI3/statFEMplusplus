@@ -21,6 +21,13 @@ include(addEigen3)
 # Enable testing
 enable_testing()
 
+# Include system paths for headers
+# include_directories(/usr/include /usr/local/include /usr/include/x86_64-linux-gnu)
+
+# Alternatively, you could add these paths to the compile flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu")
+
+
 # add_subdirectory(external/matplotplusplus)
 
 # Add subdirectories

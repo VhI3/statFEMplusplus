@@ -34,6 +34,6 @@ void BoundaryCase::setName(const std::string &name) { name_ = name; }
 const std::string &BoundaryCase::getName() const noexcept { return name_; }
 
 // Define the equality operator
-bool BoundaryCase::operator==(const BoundaryCase& other) const {
-    return name_ == other.name_;
+bool BoundaryCase::operator==(const BoundaryCase &other) const {
+  return name_ == other.name_;
 }
