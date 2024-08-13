@@ -28,10 +28,10 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <utility>
 
 // Constructor definition
-Constraint::Constraint(std::string name,
-                       BoundaryCase boundaryCase,
+Constraint::Constraint(std::string name, BoundaryCase boundaryCase,
                        const std::array<bool, 6> &constraints)
-    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)), free_(constraints) {}
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)),
+      free_(constraints) {}
 
 void Constraint::setName(const std::string &name) { name_ = name; }
 
