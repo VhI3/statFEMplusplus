@@ -36,7 +36,7 @@ public:
 
   [[nodiscard]] const std::string &getName() const noexcept;
 
-  // Euality operator as a member function
+  // Equal operator as a member function
   bool operator==(const BoundaryCase &other) const;
 
 private:

@@ -11,6 +11,7 @@ void testElementTemp() {
   const ElementTemp et(initialName, boundaryCase, initialValue);
 
   // Ensure the name is correctly set
+  // Ensure if the getName is correctly working.
   assert(et.getName() == initialName);
   std::cout << "Test case 1 passed: Initial name set correctly.\n";
 
