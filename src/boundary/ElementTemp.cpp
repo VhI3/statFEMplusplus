@@ -29,11 +29,14 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ElementTemp::ElementTemp(std::string name, BoundaryCase boundaryCase,
                          const double &value)
-    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)), scale_(1.0), value_(value) {}
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)),
+      scale_(1.0), value_(value) {}
 
-void ElementTemp::setBoundaryCase(const BoundaryCase& boundaryCase) {
+void ElementTemp::setBoundaryCase(const BoundaryCase &boundaryCase) {
   boundaryCase_ = boundaryCase;
 }
+
+void ElementTemp::setName(const std::string &name) { name_ = name; }
 
 void ElementTemp::setLoadingScale(double scale) { scale_ = scale; }
 
@@ -42,5 +45,7 @@ const std::string &ElementTemp::getName() const { return name_; }
 const BoundaryCase &ElementTemp::getBoundaryCase() const noexcept {
   return boundaryCase_;
 }
+
+double ElementTemp::getLoadingScale() const { return scale_; }
 
 double ElementTemp::getValue() const { return value_ * scale_; }

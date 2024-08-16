@@ -22,6 +22,11 @@ void testElementTemp() {
   // Ensure the value is correctly set
   assert(et.getValue() == initialValue);
   std::cout << "Test case 1 passed: Initial value set correctly.\n";
+
+  // Get the scale and set it.
+  // Ensure the scale is correctly set
+  assert(et.getLoadingScale() == 1.0);
+  std::cout << "Test case 1 passed: Initial scale set correctly.\n";
 }
 
 int main() {

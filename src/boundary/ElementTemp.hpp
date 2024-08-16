@@ -42,12 +42,20 @@ public:
                        const double &value);
 
   /**
+   * Sets name of element temperature load.
+   *
+   * @param name
+   *            The name of element temperature load.
+   */
+  void setName(const std::string &name);
+
+  /**
    * Sets boundary case to element temperature load.
    *
    * @param boundaryCase
    *              The boundary case to be set.
    */
-  void setBoundaryCase(const BoundaryCase& boundaryCase);
+  void setBoundaryCase(const BoundaryCase &boundaryCase);
 
   /**
    * Sets scaling factor for loading values.
@@ -77,6 +85,13 @@ public:
    * @return The loading value of temperature load.
    */
   [[nodiscard]] double getValue() const;
+
+  /**
+   * Returns the scaling factor for loading values.
+   *
+   * @return The scaling factor for loading values.
+   */
+  [[nodiscard]] double getLoadingScale() const;
 
 private:
   /** The name of element temperature load. */
