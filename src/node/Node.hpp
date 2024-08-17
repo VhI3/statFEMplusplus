@@ -25,7 +25,6 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #pragma once
 #include <Eigen/Core>
-#include <Eigen/Dense>
 #include <boundary/Constraint.hpp>
 #include <boundary/NodalMechLoad.hpp>
 #include <node/LocalAxis.hpp>

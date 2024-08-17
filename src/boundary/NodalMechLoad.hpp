@@ -24,17 +24,16 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #pragma once
-#include <Eigen/Dense>
+#include <Eigen/Core>
 #include <boundary/BoundaryCase.hpp>
-#include <stdexcept>
 #include <string>
 // Include BoundaryCase class or declaration here.
 
 class NodalMechLoad {
 public:
   // Static variables for the coordinate system of load
-  static const int GLOBAL = 0;
-  static const int LOCAL = 1;
+  static constexpr int GLOBAL = 0;
+  static constexpr int LOCAL = 1;
 
   /**
    * Creates load.
@@ -47,8 +46,16 @@ public:
    *            The component vector of load. It has six components; the first
    * three are forces; the last three are moments.
    */
-  NodalMechLoad(const std::string &name, BoundaryCase *boundaryCase,
+  NodalMechLoad(std::string name, BoundaryCase boundaryCase,
                 const Eigen::VectorXd &components);
+
+  /**
+   * Sets name of nodal mechanical load.
+   *
+   * @param name
+   *            The name of nodal mechanical load.
+   */
+  void setName(std::string name);
 
   /**
    * Sets boundary case to nodal mechanical load.
@@ -56,7 +63,15 @@ public:
    * @param boundaryCase
    *            The boundary case to be set.
    */
-  void setBoundaryCase(BoundaryCase *boundaryCase);
+  void setBoundaryCase(BoundaryCase boundaryCase);
+
+  /**
+   * Sets components vector of nodal mechanical load.
+   *
+   * @param components
+   *            The components vector to be set.
+   */
+  void setComponents(const Eigen::VectorXd &components);
 
   /**
    * Sets coordinate system of nodal mechanical load.
@@ -79,28 +94,28 @@ public:
    *
    * @return The name of nodal mechanical load.
    */
-  const std::string &getName() const;
+  [[nodiscard]] const std::string &getName() const;
 
   /**
    * Returns the boundary case of nodal mechanical load.
    *
    * @return The boundary case of nodal mechanical load.
    */
-  BoundaryCase *getBoundaryCase() const;
+  [[nodiscard]] BoundaryCase getBoundaryCase() const;
 
   /**
    * Returns the components vector of load.
    *
    * @return The components vector of load.
    */
-  Eigen::VectorXd getComponents() const;
+  [[nodiscard]] Eigen::VectorXd getComponents() const;
 
   /**
    * Returns the coordinate system of load.
    *
    * @return The coordinate system of load.
    */
-  int getCoordinateSystem() const;
+  [[nodiscard]] int getCoordinateSystem() const;
 
   /**
    * Check the dimension of the load vector.
@@ -116,7 +131,7 @@ private:
   std::string name_;
 
   /** The boundary case of displacement load. */
-  BoundaryCase *boundaryCase_;
+  BoundaryCase boundaryCase_;
 
   /** The component vector of load. */
   Eigen::VectorXd components_;

@@ -37,21 +37,21 @@ void testElementTemp() {
 
   // Test case 6: Set a new boundaryCase and ensure the boundaryCase is
   // correctly updated
-  BoundaryCase newBoundaryCase("Second BoundaryCase");
+ const BoundaryCase newBoundaryCase("Second BoundaryCase");
   et.setBoundaryCase(newBoundaryCase);
   // Ensure the boundaryCase is correctly updated
   assert(et.getBoundaryCase() == newBoundaryCase);
   std::cout << "Test case 6 passed: BoundaryCase updated correctly.\n";
 
   // Test case 7: Set a new scale and ensure the scale is correctly updated
-  double newScale = 2.0;
+  constexpr double newScale = 2.0;
   et.setLoadingScale(newScale);
   // Ensure the scale is correctly updated
   assert(et.getLoadingScale() == newScale);
   std::cout << "Test case 7 passed: Scale updated correctly.\n";
 
   // Test case 8: Set a new value and ensure the value is correctly updated
-  double newValue = 3.0;
+  constexpr double newValue = 3.0;
   et.setValue(newValue);
   // Ensure the value is correctly updated
   assert(et.getValue() == newValue * newScale);

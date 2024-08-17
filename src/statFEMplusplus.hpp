@@ -34,6 +34,8 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // #include <Eigen/Core>
 #include "boundary/BoundaryCase.hpp"
 #include "boundary/Constraint.hpp"
+#include "boundary/ElementTemp.hpp"
+#include "boundary/NodalMechLoad.hpp"
 #include "node/LocalAxis.hpp"
 #include "node/Node.hpp"
 // TODO: Reference additional headers your program requires here.

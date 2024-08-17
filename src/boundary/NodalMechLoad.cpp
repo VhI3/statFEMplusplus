@@ -24,33 +24,41 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <boundary/NodalMechLoad.hpp>
+#include <utility>
 
 // This is the default constructor. The arguments are the name of the
 // NodalMechLoad, the boundaryCase, and the components.
-NodalMechLoad::NodalMechLoad(const std::string &name,
-                             BoundaryCase *boundaryCase,
+NodalMechLoad::NodalMechLoad(std::string name, BoundaryCase boundaryCase,
                              const Eigen::VectorXd &components)
-    : name_(name), boundaryCase_(boundaryCase),
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)),
       components_(validateComponents(components)), scale_(1.0),
       coordinateSystem_(NodalMechLoad::GLOBAL) {}
 
-// This method sets the boundaryCase to the NodalMechLoad.
-void NodalMechLoad::setBoundaryCase(BoundaryCase *boundaryCase) {
-  boundaryCase_ = boundaryCase;
+// This method sets the name to the NodalMechLoad.
+void NodalMechLoad::setName(std::string name) { name_ = std::move(name); }
+
+// This method sets the components to the NodalMechLoad.
+void NodalMechLoad::setComponents(const Eigen::VectorXd &components) {
+  components_ = validateComponents(components);
 }
 
-void NodalMechLoad::setCoordinateSystem(int coordinateSystem) {
+// This method sets the boundaryCase to the NodalMechLoad.
+void NodalMechLoad::setBoundaryCase(BoundaryCase boundaryCase) {
+  boundaryCase_ = std::move(boundaryCase);
+}
+
+void NodalMechLoad::setCoordinateSystem(const int coordinateSystem) {
   if (coordinateSystem < GLOBAL || coordinateSystem > LOCAL) {
     throw std::invalid_argument("Illegal assignment for coordinate system!");
   }
   coordinateSystem_ = coordinateSystem;
 }
 
-void NodalMechLoad::setLoadingScale(double scale) { scale_ = scale; }
+void NodalMechLoad::setLoadingScale(const double scale) { scale_ = scale; }
 
 const std::string &NodalMechLoad::getName() const { return name_; }
 
-BoundaryCase *NodalMechLoad::getBoundaryCase() const { return boundaryCase_; }
+BoundaryCase NodalMechLoad::getBoundaryCase() const { return boundaryCase_; }
 
 Eigen::VectorXd NodalMechLoad::getComponents() const {
   return components_ * scale_;
