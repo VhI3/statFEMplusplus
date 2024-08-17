@@ -58,6 +58,14 @@ public:
   void setBoundaryCase(const BoundaryCase &boundaryCase);
 
   /**
+   * Sets value of element temperature load.
+   *
+   * @param value
+   *            The value of element temperature load.
+   */
+  void setValue(const double &value);
+
+  /**
    * Sets scaling factor for loading values.
    *
    * @param scale

@@ -32,11 +32,13 @@ ElementTemp::ElementTemp(std::string name, BoundaryCase boundaryCase,
     : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)),
       scale_(1.0), value_(value) {}
 
+void ElementTemp::setName(const std::string &name) { name_ = name; }
+
 void ElementTemp::setBoundaryCase(const BoundaryCase &boundaryCase) {
   boundaryCase_ = boundaryCase;
 }
 
-void ElementTemp::setName(const std::string &name) { name_ = name; }
+void ElementTemp::setValue(const double &value) { value_ = value; }
 
 void ElementTemp::setLoadingScale(double scale) { scale_ = scale; }
 
