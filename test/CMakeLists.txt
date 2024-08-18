@@ -35,10 +35,21 @@ add_executable(testNodalMechLoad
 # Link Eigen to the testNodalMechLoad target
 target_link_libraries(testNodalMechLoad Eigen3::Eigen)
 
+# Add test executable for testDispLoad
+add_executable(testDispLoad
+    boundary/testDispLoad.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/BoundaryCase.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/DispLoad.cpp
+)
+# Link Eigen to the testDispLoad target
+target_link_libraries(testDispLoad Eigen3::Eigen)
+
+
+
 # Add testBoundaryCase to CTest
 add_test(NAME testBoundaryCase COMMAND testBoundaryCase)
 # set_tests_properties(testBoundaryCase PROPERTIES FAIL_REGULAR_EXPRESSION ".*")  # This forces output even on success
 add_test(NAME testConstraint COMMAND testConstraint)
-# set_tests_properties(testConstraint PROPERTIES FAIL_REGULAR_EXPRESSION ".*")  # This forces output even on success
 add_test(NAME testElementTemp COMMAND testElementTemp)
 add_test(NAME testNodalMechLoad COMMAND testNodalMechLoad)
+add_test(NAME testDispLoad COMMAND testDispLoad)
