@@ -29,6 +29,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include -I/usr/local/include -I/u
 
 
 # add_subdirectory(external/matplotplusplus)
+include_directories(external/exprtk)
 
 # Add subdirectories
 add_subdirectory(src)
