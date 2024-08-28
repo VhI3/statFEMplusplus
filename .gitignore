@@ -34,7 +34,7 @@
 # Folders
 cmake-build-debug
 build
-# external
+external/matplotplusplus
 
 # IDE folders
 *.vs

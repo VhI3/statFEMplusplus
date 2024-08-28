@@ -17,7 +17,7 @@ set(PROJECT_EXTERNAL_LIBRARIES_DIR external)
 
 # Include the script for adding Eigen3
 include(addEigen3)
-
+include(addMatplotplusplus)
 # Enable testing
 enable_testing()
 
@@ -30,6 +30,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include -I/usr/local/include -I/u
 
 # add_subdirectory(external/matplotplusplus)
 include_directories(external/exprtk)
+include_directories(external/matplotplusplus)
 
 # Add subdirectories
 add_subdirectory(src)
