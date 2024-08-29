@@ -43,8 +43,8 @@ target_include_directories(statFEMpp_lib
 )
 
 # Define the executable target for the main example
-# add_executable(statFEMpp_main ../examples/main.cpp)
-add_executable(statFEMpp_main ../examples/main_exprtk_matplot.cpp)
+add_executable(statFEMpp_main ../examples/main.cpp)
+# add_executable(statFEMpp_main ../examples/main_exprtk_matplot.cpp)
 
 # Link the executable target against the library
 target_link_libraries(statFEMpp_main
