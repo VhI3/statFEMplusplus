@@ -38,7 +38,13 @@ enable_testing()
 # Alternatively, you could add these paths to the compile flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu")
 
-set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
+# set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
+
+# Check if using MSVC (Visual Studio) compiler
+if (MSVC)
+    # Add /bigobj flag for all targets
+    add_compile_options(/bigobj)
+endif()
 
 # add_subdirectory(external/matplotplusplus)
 include_directories(external/exprtk)
