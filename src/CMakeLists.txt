@@ -22,19 +22,18 @@ set(PROJECT_SOURCES
 # Define the library target
 add_library(statFEMpp_lib ${PROJECT_SOURCES})
 
-# find_package(Matplot++ REQUIRED)
+# Enable precompiled headers
+target_precompile_headers(statFEMpp_lib PRIVATE statFEMplusplus.hpp)
 
-# target_link_libraries(<your target> Matplot++::matplot)
+# Enable Unity build for faster compilation
+set_target_properties(statFEMpp_lib PROPERTIES UNITY_BUILD ON)
 
-
-# Link the library target against Eigen3
+# # Link the library target against Eigen3 and Matplot++
 target_link_libraries(statFEMpp_lib
     PUBLIC
     Eigen3::Eigen
     Matplot++::matplot
 )
-# add_executable(my_target main.cpp)
-# target_link_libraries(my_target PUBLIC matplot)
 
 # Specify the include directories
 target_include_directories(statFEMpp_lib
@@ -44,7 +43,8 @@ target_include_directories(statFEMpp_lib
 )
 
 # Define the executable target for the main example
-add_executable(statFEMpp_main ../examples/main.cpp)
+# add_executable(statFEMpp_main ../examples/main.cpp)
+add_executable(statFEMpp_main ../examples/main_exprtk_matplot.cpp)
 
 # Link the executable target against the library
 target_link_libraries(statFEMpp_main

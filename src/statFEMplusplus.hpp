@@ -29,14 +29,19 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef SRC_STATFEMPLUSPLUS_HPP
 #define SRC_STATFEMPLUSPLUS_HPP
 
+#include "exprtk.hpp"
+#include "matplot/matplot.h"
+#include <Eigen/Core>
+#include <Eigen/Dense>
 #include <iostream>
-// #include <Eigen/Dense>
-// #include <Eigen/Core>
+#include <vector>
+
 #include "boundary/BoundaryCase.hpp"
 #include "boundary/Constraint.hpp"
 #include "boundary/ElementTemp.hpp"
 #include "boundary/NodalMechLoad.hpp"
 #include "node/LocalAxis.hpp"
 #include "node/Node.hpp"
+
 // TODO: Reference additional headers your program requires here.
 #endif // SRC_STATFEMPLUSPLUS_HPP

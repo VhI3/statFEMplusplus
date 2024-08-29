@@ -7,6 +7,17 @@ project(statFEMplusplus LANGUAGES CXX)
 # Add the cmake/ directory to the CMake module path (for FindEigen3.cmake)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+# Check if ccache is available and set it as the compiler launcher
+find_program(CCACHE_PROGRAM ccache)
+
+if(CCACHE_PROGRAM)
+    message(STATUS "Found ccache: ${CCACHE_PROGRAM}")
+    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+else()
+    message(STATUS "ccache not found. Continuing without ccache.")
+endif()
+
 # Set directories for output binaries and libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -27,6 +38,7 @@ enable_testing()
 # Alternatively, you could add these paths to the compile flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu")
 
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
 
 # add_subdirectory(external/matplotplusplus)
 include_directories(external/exprtk)
