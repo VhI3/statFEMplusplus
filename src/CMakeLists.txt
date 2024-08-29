@@ -33,6 +33,7 @@ target_link_libraries(statFEMpp_lib
     PUBLIC
     Eigen3::Eigen
     Matplot++::matplot
+    ${VTK_LIBRARIES}  # Add this line to link VTK
 )
 
 # Specify the include directories
@@ -50,4 +51,5 @@ add_executable(statFEMpp_main ../examples/main.cpp)
 target_link_libraries(statFEMpp_main
     PRIVATE
     statFEMpp_lib
+    ${VTK_LIBRARIES}  # Link the main executable against VTK
 )
