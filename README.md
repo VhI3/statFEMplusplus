@@ -6,13 +6,13 @@ Welcome to the statFEM++ Project! This is a modern objected-oriented C++ 17 code
 
 1. **Element Library:** This code is designed to handle various elements, including beam elements, shells, 1D Tension bars, Trusses, 2D rectangular elements, and 3D solid elements. There is an extensive library of FEM elements to choose from.
 
-2. **Shape Functions:** The polynomial order of shape functions of elements can be increased to an arbitrary order in each direction, which provides generating elements with higher polynomial order in every direction.
+2. **Shape Functions:** The polynomial order of shape functions of elements can be increased to an arbitrary order in each direction, which generates elements with higher polynomial order in every direction.
 
-3. **Material Models Library:** Our library includes a variety of material models such as Linear Elastic, St. Veant Kirchhoff, and Hyperelastic material models like Moony Rivlin, Neo Hookean, and Ogden and maybe Elastoplastic material models.
+3. **Material Models Library:** Our library includes a variety of material models, such as linear elastic, St. Veant Kirchhoff, and Hyperelastic models like Moony Rivlin, Neo Hookean, and Ogden, and maybe Elastoplastic material models.
 
-4. **Meshing with Gmsh:** The meshing of elements is performed using Gmsh, a powerful 3D finite element mesh generator with a built-in CAD engine and post-processor. The output of Gmsh is .VTK file, which has been read with statFEM++.
+4. **Meshing with Gmsh:** The meshing of elements is performed using Gmsh, a powerful 3D finite element mesh generator with a built-in CAD engine and post-processor. Gmsh's output is a VTK file, which has been read with statFEM++.
 
-5. **Stochastic FEM:** We implement a stochastic FEM for dealing with uncertain material parameters. The code includes sampling methods like Monte Carlo simulation to quantify the uncertainties in output displacement, strains, and stresses.
+5. **Stochastic FEM:** We implement a stochastic FEM for dealing with uncertain material parameters. The code includes sampling methods like Monte Carlo simulation to quantify output displacement, strain, and stress uncertainties.
 
 6. **Polynomial Chaos:** Intrusive and Non-Intrusive polynomial chaos are implemented as surrogate models, providing a more feasible alternative to the computationally expensive Monte Carlo simulation. The stochastic regression is the first method.
 
@@ -26,11 +26,11 @@ The rest of the goals for the statFEM++ project will be announced soon. Stay tun
 
 ## Contributing
 
-Your contributions are always welcome! Please take a look at the [contribution guidelines](CONTRIBUTING.md) first.
+Your contributions are always welcome! Please review the [contribution guidelines](CONTRIBUTING.md) first.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+It is distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
