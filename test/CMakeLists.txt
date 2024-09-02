@@ -45,6 +45,14 @@ add_executable(testDispLoad
 target_link_libraries(testDispLoad Eigen3::Eigen)
 
 
+add_executable(testElementMechLoad
+    boundary/testElementMechLoad.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/BoundaryCase.cpp
+    ${CMAKE_SOURCE_DIR}/src/boundary/ElementMechLoad.cpp)
+
+# Link Eigen to the testElementMechLoad target
+target_link_libraries(testElementMechLoad Eigen3::Eigen)
+
 
 # Add testBoundaryCase to CTest
 add_test(NAME testBoundaryCase COMMAND testBoundaryCase)

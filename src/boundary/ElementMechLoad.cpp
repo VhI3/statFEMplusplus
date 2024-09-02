@@ -1,4 +1,4 @@
-﻿/*
+/*
 MIT License
 
 Copyright (c) 2023 VHI3
@@ -23,25 +23,37 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-// statFEMPP.h : Include file for standard system include files,
-// or project specific include files.
-
-#ifndef SRC_STATFEMPLUSPLUS_HPP
-#define SRC_STATFEMPLUSPLUS_HPP
-
-#include "exprtk.hpp"
-// #include "matplot/matplot.h"
-#include <Eigen/Core>
-#include <Eigen/Dense>
-#include <iostream>
-#include <vector>
-
-#include "boundary/BoundaryCase.hpp"
-#include "boundary/Constraint.hpp"
+#include "boundary/ElementMechLoad.hpp"
 #include "boundary/ElementTemp.hpp"
-#include "boundary/NodalMechLoad.hpp"
-#include "node/LocalAxis.hpp"
-#include "node/Node.hpp"
+// #include <stdexpt>
 
-// TODO: Reference additional headers your program requires here.
-#endif // SRC_STATFEMPLUSPLUS_HPP
+ElementMechLoad::ElementMechLoad(std::string name, BoundaryCase boundaryCase,
+                                 int type, int component,
+                                 const Eigen::VectorXd &loadingValues)
+    : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)) {
+  // Set type
+  if (type < 0 || type > 2)
+    exceptionHandler("Illegal type for element mechanical load!");
+  else
+    type_ = type;
+
+  // Set component
+  if (component < 0 || component > 5)
+    exceptionHandler("Illegal component for element mechanical load!");
+  else
+    component_ = component;
+
+  // Set loading values
+  if (checkValues(loadingValues))
+    loadingValues_ = loadingValues;
+}
+
+void ElementMechLoad::exceptionHandler(const std::string &message) {
+  throw std::invalid_argument(message);
+}
+
+bool ElementMechLoad::checkValues(const Eigen::VectorXd &values) {
+  if (values.size() != 6)
+    exceptionHandler("Illegal dimension of element mechanical load!");
+  return true;
+}

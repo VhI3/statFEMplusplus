@@ -48,7 +48,7 @@ endif()
 
 # add_subdirectory(external/matplotplusplus)
 include_directories(external/exprtk)
-include_directories(external/matplotplusplus)
+# include_directories(external/matplotplusplus)
 
 # Add VTK integration
 find_package(VTK REQUIRED)

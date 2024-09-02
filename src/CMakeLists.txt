@@ -14,6 +14,8 @@ set(PROJECT_SOURCES
     boundary/NodalMechLoad.cpp
     boundary/ElementTemp.hpp
     boundary/ElementTemp.cpp
+    boundary/ElementMechLoad.hpp
+    boundary/ElementMechLoad.cpp
     material/Material.hpp
     material/Material.cpp
     element/Element.hpp
@@ -32,7 +34,7 @@ set_target_properties(statFEMpp_lib PROPERTIES UNITY_BUILD ON)
 target_link_libraries(statFEMpp_lib
     PUBLIC
     Eigen3::Eigen
-    Matplot++::matplot
+    #    Matplot++::matplot
     ${VTK_LIBRARIES}  # Add this line to link VTK
 )
 
