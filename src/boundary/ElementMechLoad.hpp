@@ -38,13 +38,13 @@ public:
   static constexpr int LINE = 0, AREA = 1, VOLUME = 2;
 
   // Static constants for the component of mechanical load
-  static constexpr int fx_ = 0, fy_ = 1, fz_ = 2, mx_ = 3, my_ = 4, mz_ = 5;
+  static constexpr int FX = 0, FY = 1, FZ = 2, MX = 3, MY = 4, MZ = 5;
 
   // Static constants for the geometry of 2D loading function
-  static constexpr int quadrangular_ = 0, triangular_ = 1;
+  static constexpr int QUADRANGULAR = 0, TRIANGULAR = 1;
 
   // Static constants for the geometry of 3D loading function
-  static constexpr int hexahedral_ = 0, tetrahedral_ = 1;
+  static constexpr int HEXAHEDRAL = 0, TETRAHEDRAL = 1;
 
   /**
    * Default constructor.
@@ -95,7 +95,7 @@ public:
   void setLoadingValues(const Eigen::VectorXd &loadingValues);
 
   /**
-   * Sets scalinf factor for loading values.
+   * Sets scaling factor for loading values.
    *
    * @param scale
    *            The scaling factor to be set.
