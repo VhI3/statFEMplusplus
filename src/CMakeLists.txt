@@ -34,7 +34,7 @@ set_target_properties(statFEMpp_lib PROPERTIES UNITY_BUILD ON)
 target_link_libraries(statFEMpp_lib
     PUBLIC
     Eigen3::Eigen
-    #    Matplot++::matplot
+       Matplot++::matplot
     ${VTK_LIBRARIES}  # Add this line to link VTK
 )
 
@@ -46,8 +46,8 @@ target_include_directories(statFEMpp_lib
 )
 
 # Define the executable target for the main example
-add_executable(statFEMpp_main ../examples/main.cpp)
-# add_executable(statFEMpp_main ../examples/main_exprtk_matplot.cpp)
+# add_executable(statFEMpp_main ../examples/main.cpp)
+add_executable(statFEMpp_main ../examples/main_exprtk_matplot.cpp)
 
 # Link the executable target against the library
 target_link_libraries(statFEMpp_main

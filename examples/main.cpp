@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
       vtkSmartPointer<vtkUnstructuredGridReader>::New();
 
   reader->SetFileName(
-      "/home/vahab/development/statFEMpp/examples/mesh/plate.vtk");
+      "/home/vahab/development/statFEMplusplus/examples/mesh/plate.vtk");
   reader->Update();
 
   vtkSmartPointer<vtkUnstructuredGrid> grid = reader->GetOutput();

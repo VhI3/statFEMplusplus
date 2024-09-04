@@ -30,7 +30,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define SRC_STATFEMPLUSPLUS_HPP
 
 #include "exprtk.hpp"
-// #include "matplot/matplot.h"
+#include "matplot/matplot.h"
 #include <Eigen/Core>
 #include <Eigen/Dense>
 #include <iostream>
