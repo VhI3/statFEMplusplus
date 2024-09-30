@@ -1,0 +1,17 @@
+https://github.com/catchorg/Catch2
+
+https://github.com/gabime/spdlog
+
+https://git.rz.tu-bs.de/irmb/VirtualFluids/-/blob/develop/CMake/compilerflags/CompilerWarnings.cmake?ref_type=heads
+
+
+https://beltoforion.de/en/muparser/
+
+https://docs.github.com/en/actions
+
+https://github.com/irmb/virtualfluids
+
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files
+
+
+

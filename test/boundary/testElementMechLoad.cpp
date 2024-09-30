@@ -10,9 +10,7 @@ void testElementMechLoad() {
   constexpr int initialType = 0;
   constexpr int initialComponent = 0;
   constexpr double initialValue = 0.0;
-  // ElementMechLoad eml(initialName, boundaryCase, initialType,
-  // initialComponent,
-  // initialValue);
+  constexpr Eigen::VectorXd loadingValues_;
 }
 
 int main() {

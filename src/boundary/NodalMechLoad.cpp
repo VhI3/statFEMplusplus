@@ -33,6 +33,7 @@ NodalMechLoad::NodalMechLoad(std::string name, BoundaryCase boundaryCase,
     : name_(std::move(name)), boundaryCase_(std::move(boundaryCase)),
       components_(validateComponents(components)), scale_(1.0),
       coordinateSystem_(NodalMechLoad::GLOBAL) {}
+// Which method is better. Working with references or the std::move????
 
 // This method sets the name to the NodalMechLoad.
 void NodalMechLoad::setName(std::string name) { name_ = std::move(name); }
