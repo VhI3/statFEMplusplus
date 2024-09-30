@@ -1,5 +1,14 @@
 # statFEM++
 
+<!--toc:start-->
+- [statFEM++](#statfem)
+  - [Features](#features)
+  - [Future Goals](#future-goals)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
+<!--toc:end-->
+
 Welcome to the statFEM++ Project! This is a modern objected-oriented C++ 17 code for implementing the <span style="color:red">stat</span>istical <span style="color:red">F</span>inite <span style="color:red">E</span>lement <span style="color:red">M</span>ethod (statFEM) with multiple advanced features.
 
 ## Features
