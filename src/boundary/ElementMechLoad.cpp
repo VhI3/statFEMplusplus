@@ -24,6 +24,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include "boundary/ElementMechLoad.hpp"
+#include "boundary/BoundaryCase.hpp"
 #include "boundary/ElementTemp.hpp"
 // #include <stdexpt>
 
@@ -57,3 +58,11 @@ bool ElementMechLoad::checkValues(const Eigen::VectorXd &values) {
     exceptionHandler("Illegal dimension of element mechanical load!");
   return true;
 }
+
+std::string ElementMechLoad::getName() const { return name_; }
+
+BoundaryCase ElementMechLoad::getBoundaryCase() const { return boundaryCase_; }
+
+int ElementMechLoad::getType() const { return type_; }
+
+int ElementMechLoad::getComponent() const { return component_; }
